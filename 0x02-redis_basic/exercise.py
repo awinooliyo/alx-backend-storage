@@ -110,4 +110,3 @@ def replay(method: Callable) -> None:
         input_args = input_str.decode('utf-8')
         output_val = output_str.decode('utf-8')
         print(f"{method_qualname}(*{input_args}) -> {output_val}")
-

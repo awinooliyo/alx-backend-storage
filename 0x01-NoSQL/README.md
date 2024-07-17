@@ -29,22 +29,22 @@ NoSQL databases like MongoDB use a document-based model for storing data. Docume
 - **Schema-less**: No need to define a schema upfront, allowing for agile development and flexibility in data models.
 
 ## Querying NoSQL Databases
-### MongoDB Example
-```javascript
-// Connect to MongoDB
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb://localhost:27017/mydb";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+### MongoDB Example (Python)
+```python
+from pymongo import MongoClient
 
-// Querying example
-client.connect(err => {
-  const collection = client.db("mydb").collection("mycollection");
+# Connect to MongoDB
+client = MongoClient('mongodb://localhost:27017/')
 
-  // Find documents
-  collection.find({}).toArray((err, docs) => {
-    console.log(docs);
-  });
+# Access database
+db = client['mydb']
 
-  // Close connection
-  client.close();
-});
+# Access collection
+collection = db['mycollection']
+
+# Querying example
+for doc in collection.find():
+    print(doc)
+
+# Close connection
+client.close()
